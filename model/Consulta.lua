@@ -1,16 +1,3 @@
--- Consulta possui: - observação - prioridade:enum (gestante, idoso, bebe de colo, deficiente físico, grávida)
--- status: (pendente, marcado, consultado, cancelado) - data - especialidade:enum (dentista, outros).
-
-  
---[[    
-    private Especialidade especialidade;
-    private Prioridade prioridade;
-    private Status status;
-    private LocalDate dataSolicitacao;
-    private LocalDate dataAgendamento;    
-    private Paciente paciente;
---]]
-
 local Consulta = {especialidade, prioridade, status, dataSolicitacao, dataAgendamento, paciente}
 
 function Consulta:criar(especialidade, prioridade, status, dataSolicitacao, dataAgendamento, paciente)
