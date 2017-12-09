@@ -29,8 +29,9 @@ function Consulta:toJson()
 			   .. '"prioridade" : '.. '"' .. self.prioridade .. '"' .. ","
 			   .. '"status" : ' .. '"' .. self.status .. '"' .."," 
 			   .. '"dataSolicitacao" : '.. '"' .. self.dataSolicitacao .. '"' .."," 
-			   .. '"dataAgendamento" : '.. '"' .. self.dataAgendamento  .. '"' .. 
-			"}"
+			   .. '"dataAgendamento" : '.. '"' .. self.dataAgendamento  .. '"' ..","
+			   .. '"paciente" : '.. self.dataAgendamento:toJson() 
+			.."}"
 end
 
 return Consulta
