@@ -1,8 +1,8 @@
-local consulta = require("model.Consulta")
-local paciente = require("model.Paciente")
-local posto = require("model.Posto")
-local endereco = require("model.Endereco")
-local bairro = require("model.Bairro")
+local consulta = require("model.entidades.Consulta")
+local paciente = require("model.entidades.Paciente")
+local posto = require("model.entidades.Posto")
+local endereco = require("model.entidades.Endereco")
+local bairro = require("model.entidades.Bairro")
 
 local json = require("json")
 -- ********************************************** CONSULTA ******************************************
