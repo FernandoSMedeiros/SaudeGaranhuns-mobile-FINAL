@@ -27,7 +27,7 @@ local salvar = function()
   controller.paciente.posto.endereco.bairro.nome = "santa rosa"
   
   -- = {id= 4,nome="posto pracinha", endereco={logradouro="blá", numero="4", bairro="santa rosa"}}
-  --Adiciona a tabela posto ao atributo posto do controller, no select ele não pode receber a tabela
+  -- Adiciona a tabela posto ao atributo posto do controller, no select ele não pode receber a tabela
   -- id=mui.getTextFieldProperty("posto", "value")
   -- for i,v in ipairs(lista) do
   --   if id == lista[i].id then
@@ -59,16 +59,20 @@ end
  
 function scene:create( event )
  
+    local params = event.params
+
     local sceneGroup = self.view    
     pacienteController = controller:criar()
- 
+    
+    print(params)
+      
 end
  
 function scene:show( event )
  
     local sceneGroup = self.view
-    local phase = event.phase
-     
+    local phase = event.phase    
+
     if ( phase == "will" ) then
         
         mui.init()
@@ -167,7 +171,7 @@ function scene:show( event )
         touchpoint = true,
         callBack = mui.actionSwitchScene,
         callBackData = {
-            sceneDestination = "scenes.Login",
+            sceneDestination = "view.Login",
             sceneTransitionColor = { 0.73, 0.73, 1 },
             sceneTransitionAnimation = false
         }             

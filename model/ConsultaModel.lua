@@ -1,3 +1,4 @@
+local composer = require( "composer" )
 local json = require("json")
 
 local ConsultaModel = {consulta}
@@ -17,8 +18,7 @@ function ConsultaModel:salvar()
 		params.headers = headers
 		params.body = body
 
-		print(body)
-
+		print(body)		
 		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "POST", networkListener, params)
 	
 end

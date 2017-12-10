@@ -3,7 +3,6 @@ local widget = require( "widget" )
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
 
-
 local scene = composer.newScene()
 
 local logar = function()
@@ -14,13 +13,10 @@ local cadastrar = function()
   composer.gotoScene("view.CadastroPaciente")
 end
 
-
 function scene:create( event )
  
   local sceneGroup = self.view
 
-  --loginRestController = loginController:criar()    
-  
 end
 
 function scene:show( event )

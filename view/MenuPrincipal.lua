@@ -38,7 +38,7 @@ function scene:show( event )
         touchpoint = true,        
         callBack = mui.actionSwitchScene,
         callBackData = {
-            sceneDestination = "scenes.SolicitarConsulta",
+            sceneDestination = "view.SolicitarConsulta",
             sceneTransitionColor = { 0.73, 0.73, 1 },
             sceneTransitionAnimation = false
         }    
@@ -59,7 +59,7 @@ function scene:show( event )
         touchpoint = true,        
         callBack = mui.actionSwitchScene,
         callBackData = {
-            sceneDestination = "scenes.ListagemConsultas",
+            sceneDestination = "view.ListagemConsultas",
             sceneTransitionColor = { 0.73, 0.73, 1 },
             sceneTransitionAnimation = false
         }   
