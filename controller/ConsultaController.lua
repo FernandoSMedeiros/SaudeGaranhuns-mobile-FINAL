@@ -1,5 +1,5 @@
-local model = request("model.ConsultaModel")
-local consulta = request("model.entidades.Consulta")
+local model = require("model.ConsultaModel")
+local consulta = require("model.entidades.Consulta")
 
 local ConsultaController = {model, consulta}
 

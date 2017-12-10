@@ -1,16 +1,18 @@
-local especialidade = require("model.enumerations.Especialidade")
-local prioridade = require("model.enumerations.Prioridade")
-local status = require("model.enumerations.Status")
+local e = require("model.enumerations.Especialidade")
+local p = require("model.enumerations.Prioridade")
+local s = require("model.enumerations.Status")
 
-local paciente = require("model.")
+local especialidade = e:criar()
+local prioridade = p:criar()
+local status = s:criar()
 
 local Consulta = {especialidade, prioridade, status, dataSolicitacao, dataAgendamento, paciente}
 
 function Consulta:criar()
-	self.especialidade = 0
-	self.prioridade = 0
-	self.status = 0
-	self.dataSolicitacao = "aaaa-mm-dd"
+	self.especialidade = "GERAL"
+	self.prioridade = "NENHUMA"
+	self.status = "FILA"
+	self.dataSolicitacao = os.date()
 	self.dataAgendamento = "aaaa-mm-dd"
 	self.paciente = nil
 
@@ -20,7 +22,7 @@ end
 function Consulta:toJson()
 	return "{" .. '"especialidade" : ' .. '"' .. especialidade:valor(self.especialidade) .. '"' .. ","
 			   .. '"prioridade" : '.. '"' .. prioridade:valor(self.prioridade) .. '"' .. ","
-			   .. '"status" : ' .. '"' .. status:(self.status) .. '"' .."," 
+			   .. '"status" : ' .. '"' .. status:valor(self.status) .. '"' .."," 
 			   .. '"dataSolicitacao" : '.. '"' .. self.dataSolicitacao .. '"' .."," 
 			   .. '"dataAgendamento" : '.. '"' .. self.dataAgendamento  .. '"' ..","
 			   .. '"paciente" : '.. self.paciente:toJson() 

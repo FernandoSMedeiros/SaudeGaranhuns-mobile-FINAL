@@ -1,10 +1,11 @@
 local composer = require( "composer" )
 local json = require("json")
+local c = require("model.entidades.Consulta")
 
 local ConsultaModel = {consulta}
 
-function ConsultaModel:criar(consulta)
-	self.consulta = consulta
+function ConsultaModel:criar()
+	self.consulta = c:criar()
 	return self
 end
 
@@ -18,7 +19,8 @@ function ConsultaModel:salvar()
 		params.headers = headers
 		params.body = body
 
-		print(body)		
+		print(body)
+		
 		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "POST", networkListener, params)
 	
 end
@@ -32,6 +34,8 @@ function ConsultaModel:atualizar()
 		headers["Content-Type"] = "application/json; charset=utf-8" 
 		params.headers = headers
 		params.body = body		
+
+		print(body)
 
 		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "PUT", networkListener, params)
 	

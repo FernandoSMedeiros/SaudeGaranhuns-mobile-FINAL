@@ -3,10 +3,17 @@ local widget = require( "widget" )
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
 
+local p = require("model.entidades.Paciente")
+
 local scene = composer.newScene()
 
 local logar = function()
   composer.gotoScene("view.MenuPrincipal")
+  local paciente = p:criar()
+  paciente.nome = "Fernando"
+
+  composer.setVariable("Paciente", paciente )
+
 end
 
 local cadastrar = function()
