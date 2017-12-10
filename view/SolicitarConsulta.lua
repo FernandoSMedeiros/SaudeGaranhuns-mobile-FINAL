@@ -96,7 +96,7 @@ function scene:show( event )
         height = 30,
         listHeight = 30 * numOfRows,
         x = centerX,
-        y = centerY - 100,
+        y = centerY - 80,
         callBackTouch = mui.onRowTouchSelector,
         scrollListener = nil,
         list = { -- if 'key' use it for 'id' in the table row
@@ -111,23 +111,43 @@ function scene:show( event )
     })
 
 
-mui.newRectButton({
-    parent = mui.getParent(),
-    name = "solicitar",
-    text = "Solicitar Consulta",
-    width = 150,
-    height = 30,
-    x = centerX,
-    y = 426,
-    font = native.systemFont,
-    fontSize = 16,
-    fillColor = { 0.25, 0.75, 1, 1 },
-    textColor = { 1, 1, 1 },    
-    iconFontColor = { 1, 1, 1, 1 },
-    touchpoint = true,
-    callBack = salvar
-    
-})
+    mui.newRectButton({
+        parent = sceneGroup,
+        name = "voltarParaListaConsultas",
+        text = "Voltar",
+        width = 150,
+        height = 30,
+        x = display.getContentCenterX,
+        y = display.contentCenterY+220,
+        font = native.systemFont,
+        fontSize = 16,
+        fillColor = { 0.25, 0.75, 1, 1 },
+        textColor = { 1, 1, 1 },
+        touchpoint = true,        
+        callBack = mui.actionSwitchScene,
+        callBackData = {
+            sceneDestination = "view.MenuPrincipal",
+            sceneTransitionColor = { 0.73, 0.73, 1 },
+            sceneTransitionAnimation = false
+        }   
+    })  
+
+    mui.newRectButton({
+        parent = mui.getParent(),
+        name = "solicitar",
+        text = "Solicitar Consulta",
+        width = 150,
+        height = 30,
+        x = centerX,
+        y = 400,
+        font = native.systemFont,
+        fontSize = 16,
+        fillColor = { 0.25, 0.75, 1, 1 },
+        textColor = { 1, 1, 1 },    
+        iconFontColor = { 1, 1, 1, 1 },
+        touchpoint = true,
+        callBack = salvar    
+    })
 
 
     mui.getWidgetProperty("prioridade", "object").x = centerX
@@ -143,9 +163,11 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    -- Code here runs prior to the removal of scene's view
-    inputObservacao:removeSelf()
- 
+    
+    sceneGroup:removeSelf()
+    sceneGroup = nil
+    mui.destroy()
+    
 end
  
  

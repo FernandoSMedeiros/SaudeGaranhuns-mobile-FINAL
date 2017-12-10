@@ -1,22 +1,16 @@
 local composer = require( "composer" )
-local widget = require( "widget" )
- 
+local widget = require( "widget" ) 
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
-
 local json = require("json")
 
 local scene = composer.newScene()
- 
-function definirAnchorXeY (tabela)
-  tabela.anchorX = 0
-  tabela.anchorY = 0
-end
 
 local touch = function (event)
     print(mui.getWidgetProperty("teste", "value"))
+    composer.setVariable( "detalhe", {nome = "Fernando"}--[[mui.getWidgetProperty("teste", "value")--]] )
+    composer.gotoScene("view.DetalhesConsulta")
 end
-
 
 function scene:create( event )
  
@@ -51,7 +45,7 @@ function scene:show( event )
     end
    
     mui.newTableView({
-    parent = mui.getParent(),
+    parent = sceneGroup,
     name = "teste",
     width = display.contentWidth,
     height = display.contentHeight - 50,
@@ -75,8 +69,29 @@ function scene:show( event )
     },
     categoryColor = { default={0.8,0.8,0.8,0.8} },
     categoryLineColor = { 1, 1, 1, 0 },
-    touchpointColor = { 0.4, 0.4, 0.4 },
+    --touchpointColor = { 0.4, 0.4, 0.4 },
 })   
+
+    mui.newRectButton({
+        parent = sceneGroup,
+        name = "voltarParaListaConsultas",
+        text = "Voltar",
+        width = 150,
+        height = 40,
+        x = display.getContentCenterX,
+        y = display.contentCenterY+220,
+        font = native.systemFont,
+        fontSize = 16,
+        fillColor = { 0.25, 0.75, 1, 1 },
+        textColor = { 1, 1, 1 },
+        touchpoint = true,        
+        callBack = mui.actionSwitchScene,
+        callBackData = {
+            sceneDestination = "view.MenuPrincipal",
+            sceneTransitionColor = { 0.73, 0.73, 1 },
+            sceneTransitionAnimation = false
+        }   
+    })  
 
     end
 end
@@ -96,13 +111,15 @@ function scene:hide( event )
  
     end
 end
- 
- 
+  
 -- destroy()
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    -- Code here runs prior to the removal of scene's view
+    
+    sceneGroup:removeSelf()
+    sceneGroup = nil
+    mui.destroy()
  
 end
  
