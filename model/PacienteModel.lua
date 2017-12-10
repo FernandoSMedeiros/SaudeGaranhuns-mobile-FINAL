@@ -1,16 +1,15 @@
 local json = require("json")
 
-local PacienteModel = {paciente}
+local PacienteModel = {}
 
-function PacienteModel:criar(paciente)
-	self.paciente = paciente
+function PacienteModel:criar()
 	return self
 end
 
-function PacienteModel:salvar()
+function PacienteModel:salvar(paciente)
 	
 		local headers = {}
-		local body = self.paciente:toJson()
+		local body = paciente:toJson()
 		local params = {}
   
 		headers["Content-Type"] = "application/json; charset=utf-8" 
@@ -23,10 +22,10 @@ function PacienteModel:salvar()
 	
 end
 
-function PacienteModel:atualizar()
+function PacienteModel:atualizar(paciente)
 	
 		local headers = {}
-		local body = self.paciente:toJson()
+		local body = paciente:toJson()
 		local params = {}
   
 		headers["Content-Type"] = "application/json; charset=utf-8" 

@@ -1,7 +1,7 @@
 local Bairro = {nome}
 
-function Bairro:criar(nome)
-	self.nome = nome
+function Bairro:criar()
+	self.nome = "default"
 	return self
 end
 

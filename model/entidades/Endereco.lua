@@ -1,9 +1,11 @@
+local b = require("model.entidades.Bairro")
+
 local Endereco = {logradouro, numero, bairro}
 
-function Endereco:criar(logradouro, numero, bairro)
-	self.logradouro = logradouro
-	self.numero = numero
-	self.bairro = bairro
+function Endereco:criar()
+	self.logradouro = "default"
+	self.numero = 0
+	self.bairro = b:criar()
 	return self
 end
 

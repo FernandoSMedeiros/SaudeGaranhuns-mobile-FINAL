@@ -1,8 +1,10 @@
+local e = require("model.entidades.Endereco")
+
 local Posto = {nome, endereco}
 
-function Posto:criar(nome, endereco)
-	self.nome = nome
-	self.endereco = endereco
+function Posto:criar()
+	self.nome = "default"
+	self.endereco = e:criar()
 	return self
 end
 

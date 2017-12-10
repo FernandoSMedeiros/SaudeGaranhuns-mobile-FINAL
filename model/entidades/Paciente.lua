@@ -1,10 +1,12 @@
+local p = require("model.entidades.Posto")
+
 local Paciente = {nome, cartaoSus, dataNasc, posto}
 
-function Paciente:criar(nome, cartaoSus, dataNasc, posto)
-	self.nome = nome
-	self.cartaoSus = cartaoSus
-	self.dataNasc = dataNasc
-	self.posto = posto
+function Paciente:criar()
+	self.nome = "default"
+	self.cartaoSus = 0
+	self.dataNasc = "aaaa-mm-dd"
+	self.posto = p:criar() --
 
 	return self
 end

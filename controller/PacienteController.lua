@@ -1,11 +1,12 @@
-local model = request("model.PacienteModel")
-local paciente = request("model.entidades.Paciente")
+local model = require("model.PacienteModel")
+local paciente = require("model.entidades.Paciente")
 
 local PacienteController = {model, paciente}
 
-function PacienteController:salvar()
+function PacienteController:criar()
 	self.model = model:criar()
 	self.paciente = paciente:criar()
+	return self
 end
 
 function PacienteController:salvar()
@@ -13,7 +14,7 @@ function PacienteController:salvar()
 end
 
 function PacienteController:atualizar()
-	self.model:salvar(self.paciente)
+	self.model:atualizar(self.paciente)
 end
 
 return PacienteController
