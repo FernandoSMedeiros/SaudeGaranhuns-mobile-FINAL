@@ -45,6 +45,8 @@ function scene:show( event )
       x = display.contentCenterX,
       y = display.contentCenterY-50,
       trimAtLength = 5,
+      --fillColor = {0, 0, 0},
+      
       activeColor = { 0, 1, 1, 1 },
       inactiveColor = { 0.5, 0.5, 0.5, 1 },
       callBack = mui.textfieldCallBack
@@ -63,7 +65,7 @@ function scene:show( event )
         font = native.systemFont,
         fontSize = 16,
         fillColor = { 0.25, 0.75, 1, 1 },
-        textColor = { 1, 1, 1 },
+        textColor = { 0, 0, 0 },
         touchpoint = true,
         callBack = logar,        
     })
@@ -79,7 +81,7 @@ function scene:show( event )
         font = native.systemFont,
         fontSize = 16,
         fillColor = { 0.25, 0.75, 1, 1 },
-        textColor = { 1, 1, 1 },
+        textColor = { 0, 0, 0 },
         touchpoint = true,
         callBack = mui.actionSwitchScene,
         callBackData = {
