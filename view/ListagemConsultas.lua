@@ -64,6 +64,8 @@ function scene:show( event )
     callBackRender = mui.onRowRenderDemo,
     scrollListener = mui.scrollListener,  -- needed if using buttons, etc within the row!
     list = list,
+    fontSize = 25,
+    rowHeight = 28,
     columnOptions = {
         widths = { 60, 60, 60 }, -- must supply each else "auto" is assumed.
     },
