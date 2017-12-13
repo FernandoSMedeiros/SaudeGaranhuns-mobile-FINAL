@@ -3,16 +3,22 @@ local widget = require( "widget" )
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
 
-local p = require("model.entidades.Paciente")
+local usuario = require("model.entidades.Usuario")
+local login = require("controller.LoginController")
 
 local scene = composer.newScene()
 
 local logar = function()
-  composer.gotoScene("view.MenuPrincipal")
-  local paciente = p:criar()
-  paciente.nome = "Fernando"
 
-  composer.setVariable("Paciente", paciente )
+  login.usuario.usuario = mui.getTextFieldProperty("cart", "value")
+  login.usuario.senha = 00000
+
+  login:logar()
+  -- composer.gotoScene("view.MenuPrincipal")
+  -- local paciente = p:criar()
+  -- paciente.nome = "Fernando"
+
+  -- composer.setVariable("Paciente", paciente )
 
 end
 
@@ -30,6 +36,7 @@ function scene:show( event )
 
   local sceneGroup = self.view    
   local phase = event.phase
+  login:criar()
  
   if ( phase == "will" ) then
 
