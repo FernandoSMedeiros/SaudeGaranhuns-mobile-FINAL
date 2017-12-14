@@ -10,9 +10,9 @@ local scene = composer.newScene()
 
 local logar = function()
 
-  login.usuario.usuario = mui.getTextFieldProperty("cart", "value")
-  login.usuario.senha = 00000
-
+  login.model.usuario.usuario = mui.getTextFieldProperty("cart", "value")
+  --login.usuario.senha = 00000
+ 
   login:logar()
   -- composer.gotoScene("view.MenuPrincipal")
   -- local paciente = p:criar()
