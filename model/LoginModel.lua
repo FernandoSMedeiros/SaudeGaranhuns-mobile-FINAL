@@ -1,3 +1,4 @@
+local composer = require("composer")
 local usuario = require("model.entidades.Usuario")
 
 local LoginModel = {usuario}
@@ -9,14 +10,19 @@ end
 
 function LoginModel:logar()
 	print("chegou no logar do model")
-	print(self.usuario.usuario)
+	--print(self.usuario.usuario)
 	network.request("http://viacep.com.br/ws/01001000/json/", "GET", busca)		
 end
 
 function busca (event)
 	if ( event.isError ) then
-        print( "Network error: ", event.response )        
-		--LoginModel.usuario.usuario = "usuarioTeste"
+        print( "Network error: ", event.response )
+        local u = LoginModel.usuario.usuario        
+        
+        if (u == "123") then
+        	composer.gotoScene("view.MenuPrincipal")
+        end 
+
     else
     	--local tabela = json.decode(event.response)
     	print(event.response)

@@ -15,10 +15,10 @@ local logar = function()
  
   login:logar()
   -- composer.gotoScene("view.MenuPrincipal")
-  -- local paciente = p:criar()
+  -- local paciente = usuario:criar()
   -- paciente.nome = "Fernando"
 
-  -- composer.setVariable("Paciente", paciente )
+  composer.setVariable("Paciente", "fernando" )
 
 end
 
