@@ -1,5 +1,6 @@
 local composer = require("composer")
 local usuario = require("model.entidades.Usuario")
+local json = require("json")
 
 local LoginModel = {usuario}
 
@@ -17,16 +18,18 @@ end
 function busca (event)
 	if ( event.isError ) then
         print( "Network error: ", event.response )
-        local u = LoginModel.usuario.usuario        
         
-        if (u == "123") then
-        	composer.gotoScene("view.MenuPrincipal")
+    else
+    	
+        local usuario = LoginModel.usuario.usuario        
+        local resultado = json.decode(event.response)
+        print(resultado.cep)
+        if (usuario == resultado.cep) then
+            composer.gotoScene("view.MenuPrincipal")
         end 
 
-    else
-    	--local tabela = json.decode(event.response)
     	print(event.response)
-		--LoginModel.usuario.usuario = tabela.usuario	
+		
     end
 end
 
