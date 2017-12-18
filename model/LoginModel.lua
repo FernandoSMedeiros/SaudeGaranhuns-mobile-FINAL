@@ -18,7 +18,7 @@ end
 function busca (event)
 	if ( event.isError ) then
         print( "Network error: ", event.response )
-        
+        composer.gotoScene("view.MenuPrincipal")
     else
     	
         local usuario = LoginModel.usuario.usuario        
