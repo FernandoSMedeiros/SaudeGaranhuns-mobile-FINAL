@@ -1,4 +1,5 @@
 local controller = require("controller.PacienteController")
+local postoController = require("controller.PostoController")
 
 local composer = require( "composer" )
 
@@ -69,7 +70,9 @@ function scene:create( event )
 end
  
 function scene:show( event )
- 
+    --local p = postoController:criar()
+    --print(posto)
+
     local sceneGroup = self.view
     local phase = event.phase    
 

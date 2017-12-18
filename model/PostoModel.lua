@@ -2,6 +2,8 @@ local json = require("json")
 
 local PostoModel = {}
 
+posto = "vdsok"
+
 function PostoModel:criar()
 	PostoModel:buscar()	
 	return self
@@ -13,9 +15,9 @@ end
 
 function busca (event)
 	if ( event.isError ) then
-        print( "Network error: ", event.response )
+        print( "Network error: ", event.response )        
     else
-    	local tabela = json.decode(event.response)
+    	--local tabela = json.decode(event.response)
     	--print(event.response)
     end
 end

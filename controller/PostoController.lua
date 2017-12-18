@@ -1,5 +1,5 @@
-local model = request("model.PostoModel")
-local posto = request("model.entidades.Posto")
+local model = require("model.PostoModel")
+local posto = require("model.entidades.Posto")
 
 local PostoController = {model, posto}
 
@@ -12,3 +12,5 @@ end
 function PostoController:buscar()
 	self.model:buscar()
 end
+
+return PostoController
