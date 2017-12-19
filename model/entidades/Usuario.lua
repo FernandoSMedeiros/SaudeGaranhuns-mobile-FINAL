@@ -1,16 +1,19 @@
-local Usuario = {usuario, senha, perfilUsuario}
+local Usuario = {id, usuario, senha, perfilUsuario}
 
 function Usuario:criar()
-	self.usuario = 00000
+	self.id = 0
+	self.login = 00000
 	self.senha = 00000
-	self.perfilUsuario = "Paciente"
+	self.perfilUsuario = "PACIENTE"
 	return self
 end
 
 function Usuario:toJson()
-	 return "{" .. '"usuario ":'.. '"' .. self.nome .. '",'
-               	.. '"senha":' .. '"' .. self.senha .. '"'
-               	.."}"
+	 return "{" .. '"id ":'.. '"' .. self.id .. '",'
+	 			.. '"login ":'.. '"' .. self.login .. '",'
+               	.. '"senha":' .. '"' .. self.senha .. '",'
+               	.. '"perfilUsuario":' .. '"' .. self.perfilUsuario .. '"'
+               	..'}'
 end
 
 return Usuario

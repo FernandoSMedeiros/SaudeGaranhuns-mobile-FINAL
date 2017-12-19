@@ -18,7 +18,7 @@ function PacienteModel:salvar(paciente)
 
 		print(body)
 
-		network.request( "http://192.168.56.1:8888/pacientes", "POST", networkListener, params)
+		network.request( "http://192.168.0.105:8080/pacientes", "POST", networkListener, params)
 	
 end
 

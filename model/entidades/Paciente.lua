@@ -1,22 +1,28 @@
 local p = require("model.entidades.Posto")
+local data = require("model.entidades.DataNascimento")
+local user = require("model.entidades.Usuario")
 
-local Paciente = {nome, cartaoSus, dataNasc, posto}
+local Paciente = {id, nome, cartaoSus, dataNasc, posto, usuario}
 
 function Paciente:criar()
+	self.id = 0
 	self.nome = "default"
 	self.cartaoSus = 0
-	self.dataNasc = "aaaa-mm-dd"
-	self.posto = p:criar() --
+	self.dataNasc = data:criar() 
+	self.posto = p:criar()
+	self.usuario = user:criar()
 
 	return self
 end
 
 function Paciente:toJson()
-    return "{" .. '"nome ":'.. '"' .. self.nome .. '",'
-               .. '"cartaoSus":' .. '"' .. self.cartaoSus .. '",'
-               .. '"dataNasc":' .. '"' .. self.dataNasc .. '",'
-               .. '"posto":' .. self.posto:toJson()
-               .. "}"
+    return "{" .. '"id":'.. '"' .. self.id .. '",'
+    		   .. '"nome":'.. '"' .. self.nome .. '",'
+               .. '"cartaoSus":' .. '"'.. self.cartaoSus .. '",'
+               .. '"dataNasc":' .. self.dataNasc:toJson() .. ','
+               .. '"posto":' .. self.posto:toJson().. ','
+               .. '"usuario":' .. self.usuario:toJson()
+               .. '}'
 end
 
 return Paciente
