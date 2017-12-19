@@ -18,7 +18,7 @@ function PacienteModel:salvar(paciente)
 
 		print(body)
 
-		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "POST", networkListener, params)
+		network.request( "http://192.168.56.1:8888/pacientes", "POST", networkListener, params)
 	
 end
 
@@ -32,7 +32,7 @@ function PacienteModel:atualizar(paciente)
 		params.headers = headers
 		params.body = body		
 
-		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "PUT", networkListener, params)
+		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "POST", networkListener, params)
 	
 end
 
