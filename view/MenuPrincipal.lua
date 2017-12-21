@@ -13,7 +13,7 @@ function scene:create( event )
     local sceneGroup = self.view    
     logado = login.model.logado
     composer.setVariable("pacienteLogado", logado)
-    print("Paciente Logado: " .. logado.nome)
+    --print("Paciente Logado: " .. logado.nome)
 
 end 
 

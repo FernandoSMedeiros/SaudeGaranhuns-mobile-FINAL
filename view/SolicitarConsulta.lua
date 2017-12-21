@@ -1,30 +1,30 @@
 local composer = require( "composer" )
 local widget = require( "widget" )
-
 local mui = require( "materialui.mui" )
-local muiData = require( "materialui.mui-data" )
- 
+local muiData = require( "materialui.mui-data" ) 
 local controller = require("controller.ConsultaController")
---local consultaController = controller:criar()
+local paciente = require("model.entidades.Paciente")
+local json = require("json")
 
 local consultaController = nil
 
 local scene = composer.newScene() 
  
 local salvar = function()
+
+  local paciente = paciente:criar()
+    
  
-  local paciente = composer.getVariable("Paciente") 
+  paciente = composer.getVariable("pacienteLogado") 
+  print(paciente)
   consultaController.consulta.especialidade = mui.getWidgetProperty("especialidade", "value")
   consultaController.consulta.prioridade = mui.getWidgetProperty("prioridade", "value")
   consultaController.consulta.paciente = paciente
   
-  -- mui.getWidgetProperty("prioridade", "value")  
-
   consultaController:salvar()
 
 end
- 
- 
+  
 local centerX = display.contentCenterX
 local centerY = display.contentCenterY
 

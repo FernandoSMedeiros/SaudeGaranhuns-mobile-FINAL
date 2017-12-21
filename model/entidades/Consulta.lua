@@ -14,18 +14,18 @@ function Consulta:criar()
 	self.status = "FILA"
 	self.dataSolicitacao = os.date()
 	self.dataAgendamento = "aaaa-mm-dd"
-	self.paciente = nil
+	self.paciente = paciente
 
 	return self
 end
 
 function Consulta:toJson()
-	return "{" .. '"especialidade" : ' .. '"' .. especialidade:valor(self.especialidade) .. '"' .. ","
-			   .. '"prioridade" : '.. '"' .. prioridade:valor(self.prioridade) .. '"' .. ","
-			   .. '"status" : ' .. '"' .. status:valor(self.status) .. '"' .."," 
-			   .. '"dataSolicitacao" : '.. '"' .. self.dataSolicitacao .. '"' .."," 
-			   .. '"dataAgendamento" : '.. '"' .. self.dataAgendamento  .. '"' ..","
-			   .. '"paciente" : '.. self.paciente:toJson() 
+	return "{" .. '"especialidade": ' .. '"' .. especialidade:valor(self.especialidade) .. '"' .. ","
+			   .. '"prioridade": '.. '"' .. prioridade:valor(self.prioridade) .. '"' .. ","
+			   .. '"status":' .. '"' .. status:valor(self.status) .. '"' .."," 
+			   .. '"dataSolicitacao": '.. '"' .. self.dataSolicitacao .. '"' .."," 
+			   .. '"dataAgendamento": '.. '"' .. self.dataAgendamento  .. '"' ..","
+			   .. '"paciente": '.. self.paciente 
 			.."}"
 end
 

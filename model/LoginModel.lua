@@ -32,7 +32,7 @@ function busca (event)
         
         local resultado = json.decode(event.response)
         
-        LoginModel.logado = resultado
+        LoginModel.logado = event.response
 
         print(event.response)
            

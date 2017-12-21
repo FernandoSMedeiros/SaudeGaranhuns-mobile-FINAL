@@ -21,7 +21,7 @@ function ConsultaModel:salvar()
 
 		print(body)
 		
-		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "POST", networkListener, params)
+		network.request( "http://192.168.0.105:8080/consultas", "POST", networkListener, params)
 	
 end
 
@@ -59,9 +59,9 @@ end
 
 function networkListener(event) 
     if ( event.isError ) then
-        print( "Network error: ", event.response )
+        print( "Status: ", event.status )
     else
-        print ( "RESPONSE: " .. event.response )
+        print ( "Status: " .. event.status )
     end
 end
 
