@@ -24,9 +24,9 @@ function busca (event)
         local usuario = LoginModel.usuario.usuario        
         local resultado = json.decode(event.response)
         print(resultado.cep)
-        if (usuario == resultado.cep) then
+        --if (usuario == resultado.cep) then
             composer.gotoScene("view.MenuPrincipal")
-        end 
+        --end 
 
     	print(event.response)
 		

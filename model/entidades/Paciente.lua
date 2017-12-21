@@ -19,8 +19,8 @@ function Paciente:toJson()
     return "{" .. '"id":'.. '"' .. self.id .. '",'
     		   .. '"nome":'.. '"' .. self.nome .. '",'
                .. '"cartaoSus":' .. '"'.. self.cartaoSus .. '",'
-               .. '"dataNasc":' .. self.dataNasc:toJson() .. ','
-               .. '"posto":' .. self.posto:toJson().. ','
+               .. '"dataNascimento":' .. self.dataNasc:toJson() .. ','
+               .. '"postoSaude":' .. self.posto:toJson().. ','
                .. '"usuario":' .. self.usuario:toJson()
                .. '}'
 end

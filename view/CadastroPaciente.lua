@@ -71,6 +71,8 @@ function mui.datePickerCallBack( event )
     local text = "Date Column 1 Value: " .. (value.month or "") .. "\nColumn 2 Value: " .. (value.day or "") .. "\nColumn 3 Value: " .. (value.year or "")
     print("text: "..text)
     controller.paciente.dataNasc.year = value.year
+    controller.paciente.dataNasc.month = value.month
+    controller.paciente.dataNasc.day = value.day
 
   end
   mui.removeDateTimePicker(event)

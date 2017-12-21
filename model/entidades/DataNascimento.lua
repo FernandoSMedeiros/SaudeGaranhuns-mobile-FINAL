@@ -8,7 +8,7 @@ function DataNascimento:criar()
 end
 
 function DataNascimento:toJson()
-    return "{" .. '"year ":'.. '"' .. self.year .. '",'
+    return "{" .. '"year":'.. '"' .. self.year .. '",'
                .. '"month":' .. '"' .. self.month .. '",'
                .. '"day":' .. '"' .. self.day .. '"'               
                .. "}"
