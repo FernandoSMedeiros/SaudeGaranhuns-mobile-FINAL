@@ -1,4 +1,4 @@
-local Usuario = {id, usuario, senha, perfilUsuario}
+local Usuario = {id, login, senha, perfilUsuario}
 
 function Usuario:criar()
 	self.id = 0

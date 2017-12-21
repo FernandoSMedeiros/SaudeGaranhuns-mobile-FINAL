@@ -10,7 +10,7 @@ local scene = composer.newScene()
 
 local logar = function()
 
-  login.model.usuario.usuario = mui.getTextFieldProperty("cart", "value")
+  login.model.usuario.login = mui.getTextFieldProperty("cart", "value")
   --login.usuario.senha = 00000
  
   login:logar()

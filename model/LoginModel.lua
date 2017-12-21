@@ -12,24 +12,29 @@ end
 function LoginModel:logar()
 	print("chegou no logar do model")
 	--print(self.usuario.usuario)
-	network.request("http://viacep.com.br/ws/01001000/json/", "GET", busca)		
+	network.request("http://192.168.0.105:8080/pacientes?cartaoSus=" .. self.usuario.login, "GET", busca)		
 end
 
 function busca (event)
 	if ( event.isError ) then
+        
         print( "Network error: ", event.response )
-        composer.gotoScene("view.MenuPrincipal")
+        
     else
-    	
-        local usuario = LoginModel.usuario.usuario        
-        local resultado = json.decode(event.response)
-        print(resultado.cep)
-        --if (usuario == resultado.cep) then
-            composer.gotoScene("view.MenuPrincipal")
-        --end 
+        
+        print(event.status)
 
-    	print(event.response)
-		
+        --[[local response = event.response
+        local usuario = LoginModel.usuario.login           
+        
+        local resultado = json.decode(event.response)
+        
+        print(resultado.cartaoSus)
+        
+        if (usuario == resultado.cartaoSus) then
+            composer.gotoScene("view.MenuPrincipal")
+        end --]]     
+        
     end
 end
 
