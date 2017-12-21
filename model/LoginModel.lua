@@ -2,7 +2,9 @@ local composer = require("composer")
 local usuario = require("model.entidades.Usuario")
 local json = require("json")
 
-local LoginModel = {usuario}
+local LoginModel = {usuario, logado}
+
+usuarioLogado = nil
 
 function LoginModel:criar()	
 	self.usuario = usuario:criar()
@@ -21,19 +23,24 @@ function busca (event)
         print( "Network error: ", event.response )
         
     else
-        
-        print(event.status)
 
-        --[[local response = event.response
+        print("Login status: " .. event.status)
+        if event.status == 200 then
+
+        local response = event.response
         local usuario = LoginModel.usuario.login           
         
         local resultado = json.decode(event.response)
         
-        print(resultado.cartaoSus)
-        
-        if (usuario == resultado.cartaoSus) then
-            composer.gotoScene("view.MenuPrincipal")
-        end --]]     
+        LoginModel.logado = resultado
+
+        print(event.response)
+           
+            if (usuario == resultado.cartaoSus) then
+                composer.gotoScene("view.MenuPrincipal")                
+            end  
+
+        end    
         
     end
 end

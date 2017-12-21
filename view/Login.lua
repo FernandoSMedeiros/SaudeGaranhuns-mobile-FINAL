@@ -10,15 +10,8 @@ local scene = composer.newScene()
 
 local logar = function()
 
-  login.model.usuario.login = mui.getTextFieldProperty("cart", "value")
-  --login.usuario.senha = 00000
- 
+  login.model.usuario.login = mui.getTextFieldProperty("cart", "value")  
   login:logar()
-  -- composer.gotoScene("view.MenuPrincipal")
-  -- local paciente = usuario:criar()
-  -- paciente.nome = "Fernando"
-
-  composer.setVariable("Paciente", "fernando" )
 
 end
 
@@ -29,6 +22,7 @@ end
 function scene:create( event )
  
   local sceneGroup = self.view
+  login:criar()
 
 end
 
@@ -36,7 +30,7 @@ function scene:show( event )
 
   local sceneGroup = self.view    
   local phase = event.phase
-  login:criar()
+  
  
   if ( phase == "will" ) then
 
@@ -107,7 +101,7 @@ function scene:show( event )
 end
 
 function scene:destroy( event )
- 
+
     local sceneGroup = self.view
     
     sceneGroup:removeSelf()

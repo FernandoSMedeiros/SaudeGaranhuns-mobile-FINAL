@@ -2,16 +2,19 @@ local composer = require( "composer" )
  
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
+local login = require("controller.LoginController")
 
 local scene = composer.newScene()
  
-
+local logado
 
 function scene:create( event )
  
-    local sceneGroup = self.view
-    -- Code here runs when the scene is first created but has not yet appeared on screen
- 
+    local sceneGroup = self.view    
+    logado = login.model.logado
+    composer.setVariable("pacienteLogado", logado)
+    print("Paciente Logado: " .. logado.nome)
+
 end 
 
 function scene:show( event )
