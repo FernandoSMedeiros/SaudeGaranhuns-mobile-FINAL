@@ -8,9 +8,10 @@ local especialidade = e:criar()
 local prioridade = p:criar()
 local status = s:criar()
 
-local Consulta = {especialidade, prioridade, status, dataSolicitacao, dataAgendamento, paciente}
+local Consulta = {id, especialidade, prioridade, status, dataSolicitacao, dataAgendamento, paciente}
 
 function Consulta:criar()
+	self.id = 0
 	self.especialidade = "GERAL"
 	self.prioridade = "NENHUMA"
 	self.status = "FILA"
@@ -22,13 +23,14 @@ function Consulta:criar()
 end
 
 function Consulta:toJson()
-	return '[' .. "{" .. '"especialidade":' .. especialidade:valor(self.especialidade) .. ","
-			   .. '"prioridade":'.. prioridade:valor(self.prioridade) .. ","
-			   .. '"status":' .. status:valor(self.status) .."," 
+	return "{" .. '"id":' .. self.id .. ","
+			   .. '"especialidade":' .. '"' .. self.especialidade .. '"' .. ","
+			   .. '"prioridade":'.. '"' .. self.prioridade .. '"' .. ","
+			   .. '"status":' .. '"' .. self.status .. '"' .. "," 
 			   .. '"dataSolicitacao":'.. self.dataSolicitacao:toJson() .."," 
 			   .. '"dataAgendamento":'.. self.dataAgendamento:toJson()  ..","
 			   .. '"paciente":'.. self.paciente 
-			.."}" .. ']'
+			.."}"
 end
 
 return Consulta
