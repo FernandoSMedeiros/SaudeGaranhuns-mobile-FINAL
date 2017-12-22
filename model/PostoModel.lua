@@ -1,23 +1,22 @@
 local json = require("json")
 
-local PostoModel = {}
-
-posto = "vdsok"
+local PostoModel = {postos}
 
 function PostoModel:criar()
-	PostoModel:buscar()	
+	self:buscar()	
 	return self
 end
 
 function PostoModel:buscar()
-	network.request("http://viacep.com.br/ws/01001000/json/", "GET", busca)		
+	network.request("http://localhost:8080/postos", "GET", busca)		
 end
 
 function busca (event)
 	if ( event.isError ) then
         print( "Network error: ", event.response )        
     else
-    	--local tabela = json.decode(event.response)
+    	local tabela = json.decode(event.response)
+    	PostoModel.postos = tabela
     	--print(event.response)
     end
 end

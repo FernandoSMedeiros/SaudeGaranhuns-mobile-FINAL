@@ -1,12 +1,12 @@
-local model = require("model.PostoModel")
-local posto = require("model.entidades.Posto")
+local m = require("model.PostoModel")
+local p = require("model.entidades.Posto")
 
 local PostoController = {model, posto}
 
 function PostoController:criar()
-	self.model = model:criar()
-	self.posto = posto:criar()
-	return self
+	self.model = m:criar()
+	self.posto = p:criar()
+	return PostoController
 end	
 
 function PostoController:buscar()

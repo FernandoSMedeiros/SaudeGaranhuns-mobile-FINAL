@@ -2,9 +2,9 @@ local composer = require( "composer" )
 local widget = require( "widget" )
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
-
 local usuario = require("model.entidades.Usuario")
 local login = require("controller.LoginController")
+local controller = require("controller.PostoController")
 
 local scene = composer.newScene()
 
@@ -96,7 +96,7 @@ function scene:show( event )
     mui.getRoundedRectButtonProperty("cadastrar", "text").x = display.getContentCenterX
 
     elseif ( phase == "did" ) then
-    
+      local posto = controller:criar()
     end
 end
 

@@ -17,9 +17,9 @@ function LoginModel:logar()
 	network.request("http://192.168.0.105:8080/pacientes?cartaoSus=" .. self.usuario.login, "GET", busca)		
 end
 
-function busca (event)
+function busca (event)    
 	if ( event.isError ) then
-        
+        print(event.status)
         print( "Network error: ", event.response )
         
     else

@@ -1,41 +1,46 @@
 local controller = require("controller.PacienteController")
 local postoController = require("controller.PostoController")
-
+local json = require("json")
 local composer = require( "composer" )
 
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" ) 
 local scene = composer.newScene()
 
-local lista = nil
---lista = postoController.todos()
+local lista = postoController.model.postos
 
-lista = {
+
+--[[lista = {
   {id= 1,nome="posto são vicente", endereco={logradouro="blá", numero="20", bairro="centro"}},
   {id= 2,nome="posto são mario", endereco={logradouro="blá", numero="23", bairro="bela vista"}},
   {id= 3,nome="posto são joao", endereco={logradouro="blá", numero="12", bairro="quatis"}},
   {id= 4,nome="posto pracinha", endereco={logradouro="blá", numero="4", bairro="santa rosa"}},
-}
+}--]]
  
 local salvar = function()
   
   controller.paciente.nome = mui.getTextFieldProperty("nome", "value")
-  controller.paciente.cartaoSus = mui.getTextFieldProperty("cartao", "value")
-  --controller.paciente.dataNasc = mui.getTextFieldProperty("dataNasc", "value")
-  controller.paciente.posto.nome = "posto pracinha"
+  controller.paciente.cartaoSus = mui.getTextFieldProperty("cartao", "value")  
+  --[[controller.paciente.posto.nome = "posto pracinha"
   controller.paciente.posto.endereco.logradouro = "rua da tanajura selvagem"
   controller.paciente.posto.endereco.numero = 0
-  controller.paciente.posto.endereco.bairro.nome = "santa rosa"
+  controller.paciente.posto.endereco.bairro.nome = "santa rosa"--]]
   
   -- = {id= 4,nome="posto pracinha", endereco={logradouro="blá", numero="4", bairro="santa rosa"}}
   -- Adiciona a tabela posto ao atributo posto do controller, no select ele não pode receber a tabela
-  -- id=mui.getTextFieldProperty("posto", "value")
-  -- for i,v in ipairs(lista) do
-  --   if id == lista[i].id then
-  --     pacienteController.paciente.posto = lista[i]
-  --     break
-  --   end
-  -- end
+  id = mui.getWidgetProperty("posto", "value")
+  for i,v in ipairs(lista) do
+    if id == lista[i].id then
+      --pacienteController.paciente.posto = lista[i]
+
+      pacienteController.paciente.posto.nome = lista[i].nome
+      pacienteController.paciente.posto.endereco.logradouro = lista[i].endereco.logradouro
+      pacienteController.paciente.posto.endereco.numero = lista[i].endereco.numero
+      pacienteController.paciente.posto.endereco.bairro.nome = lista[i].endereco.bairro.nome
+
+      break
+    end
+  end
 
   controller:salvar()
 
@@ -61,6 +66,8 @@ end
 function scene:create( event )
  
     local params = event.params
+    
+    --posto:buscar()
 
     local sceneGroup = self.view    
     pacienteController = controller:criar()
@@ -72,6 +79,8 @@ end
 function scene:show( event )
     --local p = postoController:criar()
     --print(posto)
+
+
 
     local sceneGroup = self.view
     local phase = event.phase    
@@ -185,8 +194,8 @@ function scene:show( event )
     mui.getRoundedRectButtonProperty("cadastrar", "text").x = display.getContentCenterX
     mui.getRoundedRectButtonProperty("voltar", "text").x = display.getContentCenterX
  
-    elseif ( phase == "did" ) then
-             
+    elseif ( phase == "did" ) then      
+
     end
 end
 
