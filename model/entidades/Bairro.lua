@@ -7,7 +7,7 @@ function Bairro:criar()
 end
 
 function Bairro:toJson()
-	return "{" .. '"id":'.. '"' .. self.id .. '",'
+	return "{" .. '"id":'.. self.id .. ','
 			   .. '"nome":' .. '"' .. self.nome ..'"' 
 			.. "}"
 end

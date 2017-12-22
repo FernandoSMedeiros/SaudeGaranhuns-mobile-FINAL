@@ -16,7 +16,7 @@ function Paciente:criar()
 end
 
 function Paciente:toJson()
-    return "{" .. '"id":'.. '"' .. self.id .. '",'
+    return "{" .. '"id":'.. self.id .. ','
     		   .. '"nome":'.. '"' .. self.nome .. '",'
                .. '"cartaoSus":' .. '"'.. self.cartaoSus .. '",'
                .. '"dataNascimento":' .. self.dataNasc:toJson() .. ','

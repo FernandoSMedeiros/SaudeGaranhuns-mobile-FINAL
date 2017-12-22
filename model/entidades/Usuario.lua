@@ -4,15 +4,15 @@ function Usuario:criar()
 	self.id = 0
 	self.login = 00000
 	self.senha = 00000
-	self.perfilUsuario = "PACIENTE"
+	self.perfilUsuario = 2
 	return self
 end
 
 function Usuario:toJson()
-	 return "{" .. '"id ":'.. '"' .. self.id .. '",'
+	 return "{" .. '"id":'.. self.id .. ','
 	 			.. '"login ":'.. '"' .. self.login .. '",'
                	.. '"senha":' .. '"' .. self.senha .. '",'
-               	.. '"perfilUsuario":' .. '"' .. self.perfilUsuario .. '"'
+               	.. '"perfilUsuario":' .. self.perfilUsuario .. ''
                	..'}'
 end
 

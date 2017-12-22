@@ -13,7 +13,7 @@ end
 
 function LoginModel:logar()
 	print("chegou no logar do model")
-	--print(self.usuario.usuario)
+	print(self.usuario.login)
 	network.request("http://192.168.0.105:8080/pacientes?cartaoSus=" .. self.usuario.login, "GET", busca)		
 end
 

@@ -11,7 +11,7 @@ function Endereco:criar()
 end
 
 function Endereco:toJson()
-	return "{" .. '"id":'.. '"' .. self.id .. '",'
+	return "{" .. '"id":'.. self.id .. ','
 			   .. '"logradouro":'.. '"' .. self.logradouro .. '",'
                .. '"numero":' .. '"' .. self.numero .. '",'               
                .. '"bairro":' .. self.bairro:toJson()               

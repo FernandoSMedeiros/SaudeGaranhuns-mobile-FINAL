@@ -57,28 +57,6 @@ local function listaSelect()
   end]]
   return retorno
 end
-
-function mui.datePickerCallBack( event )
-  -- Retrieve the current values from the picker
-  local callBackData = mui.getEventParameter(event, "muiTargetCallBackData")
-  if callBackData == nil then return end
-
-  local muiName = callBackData.targetName
-
-  if muiData.widgetDict[muiName] ~= nil then
-    local value = mui.pickerGetCurrentValue(muiName)
-
-    local text = "Date Column 1 Value: " .. (value.month or "") .. "\nColumn 2 Value: " .. (value.day or "") .. "\nColumn 3 Value: " .. (value.year or "")
-    print("text: "..text)
-    controller.paciente.dataNasc.year = value.year
-    controller.paciente.dataNasc.month = value.month
-    controller.paciente.dataNasc.day = value.day
-
-  end
-  mui.removeDateTimePicker(event)
-
-  return true
-end
  
 function scene:create( event )
  
@@ -133,33 +111,7 @@ function scene:show( event )
       inactiveColor = { 0.5, 0.5, 0.5, 1 },
       callBack = mui.textfieldCallBack
     })
-
-    mui.newDatePicker({
-    parent = sceneGroup,
-    name = "nascimento",
-    font = native.systemFont,
-    fontSize = 18,
-    width = 300,
-    height = 100,
-    fontColor = { 0.7, 0.7, 0.7, 1 }, -- non-select items
-    fontColorSelected = { 0, 0, 0, 1 }, -- selected items
-    columnColor = { 1, 1, 1, 1 }, -- background color for columns
-    strokeColor = { 0.25, 0.75, 1, 1 }, -- the border color around widget
-    gradientBorderShadowColor1 = { 1, 1, 1, 0.2 },
-    gradientBorderShadowColor2 = { 1, 1, 1, 1 },
-    fromYear = 1940,
-    toYear = 2020,
-    startMonth = 11,
-    startDay = 15,
-    startYear = 2015,
-    cancelButtonText = "Cancel",
-    cancelButtonTextColor = { 1, 1, 1, 1 },
-    cancelButtonFillColor = { 0.25, 0.75, 1, 1 },
-    submitButtonText = "Set",
-    submitButtonFillColor = { 0.25, 0.75, 1, 1 },
-    submitButtonTextColor = { 1, 1, 1, 1 },
-    callBack = mui.datePickerCallBack,
-    })
+    
 
     local listaSelect = listaSelect()
     mui.newSelect({
