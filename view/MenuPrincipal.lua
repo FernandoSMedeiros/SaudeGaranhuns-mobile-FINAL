@@ -41,7 +41,7 @@ function scene:show( event )
         touchpoint = true,        
         callBack = mui.actionSwitchScene,
         callBackData = {
-            sceneDestination = "view.SolicitarConsulta",
+            sceneDestination = "view.SelecionarEspecialidade",
             sceneTransitionColor = { 0.73, 0.73, 1 },
             sceneTransitionAnimation = false
         }    
