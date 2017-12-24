@@ -7,24 +7,25 @@ local json = require("json")
 
 local scene = composer.newScene()
 
-local touch = function (event)
-    print(mui.getWidgetProperty("teste", "value"))
-    composer.setVariable( "detalhe", {nome = "Fernando"})
+local controller = consulta:criar()
+local idPaciente = json.decode(composer.getVariable("pacienteLogado"))
+tab = controller:buscar(idPaciente.id)
+print(tab)
+list = {}
+
+local touch = function ()
+    local id = mui.getWidgetProperty("detalhar", "value")
+    local detalhar = tab[id]
+
+    composer.setVariable("detalhe", detalhar)
     composer.gotoScene("view.DetalhesConsulta")
 end
 
 function scene:create( event )
  
     local sceneGroup = self.view
-
-    local controller = consulta:criar()
-
-    local idPaciente = json.decode(composer.getVariable("pacienteLogado"))
+    
     print(idPaciente.id)
-
-    tab = controller:buscar(idPaciente.id)
-    print(tab)
-    list = {}
 
 end
   
@@ -48,7 +49,7 @@ function scene:show( event )
 
     mui.newTableView({
     parent = sceneGroup,
-    name = "teste",
+    name = "detalhar",
     width = display.contentWidth,
     height = display.contentHeight - 50,
     top = 0,
@@ -122,7 +123,7 @@ function scene:destroy( event )
     
     sceneGroup:removeSelf()
     sceneGroup = nil
-    mui.destroy()
+    mui.destroy()    
  
 end
  

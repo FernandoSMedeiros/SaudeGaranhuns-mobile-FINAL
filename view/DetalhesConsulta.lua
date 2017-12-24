@@ -6,13 +6,15 @@ local muiData = require( "materialui.mui-data" )
  
 local scene = composer.newScene()
  
-local detalhe = composer.getVariable("detalhe")
+
 
 function scene:create( event )
  
     local sceneGroup = self.view
     
     mui.init()
+
+    detalhe = composer.getVariable("detalhe")
  
 end
   
@@ -27,6 +29,8 @@ function scene:show( event )
     local centerX = display.contentCenterX
     local centerY = display.contentCenterY
 
+    local cor = {0, 0, 0}
+
      mui.newText({
       y = 16,
       x = centerX - 100,
@@ -36,19 +40,19 @@ function scene:show( event )
       width = 140,
       font = native.systemFontBold,
       fontSize = 12,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 
       mui.newText({
       y = 40,
       x = centerX - 85,
       name = "dataSolicitacao",
-      text = "15/08/2017",
+      text = detalhe.dataSolicitacao.day .. '/' .. detalhe.dataSolicitacao.month .. '/' .. detalhe.dataSolicitacao.year,
       align = "center",
       width = 150,
       font = native.systemFont,
       fontSize = 25,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 -- --------------------------------------
      mui.newText({
@@ -60,19 +64,19 @@ function scene:show( event )
       width = 140,
       font = native.systemFontBold,
       fontSize = 12,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })     
 
       mui.newText({
       y = 40,
       x = 232,
       name = "statusAtual",
-      text = "Cancelado",
+      text = detalhe.status,
       align = "center",
       width = 150,
       font = native.systemFont,
       fontSize = 25,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 
 -- ----------------------------------------     
@@ -81,23 +85,23 @@ function scene:show( event )
       y = 80,
       x = centerX - 120,
       name = "paciente",
-      text = "Paciente",
+      text = "paciente",
       --align = "center",
       width = 50,
       font = native.systemFontBold,
       fontSize = 12,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })     
 
       mui.newText({
       y = 104,
       x = centerX + 23,
       name = "nome",
-      text = "Fulano de Tal",
+      text = detalhe.paciente.nome,
       width = 340,
       font = native.systemFont,
       fontSize = 25,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 -- ----------------------------------------------
 
@@ -110,18 +114,18 @@ function scene:show( event )
       width = 100,
       font = native.systemFontBold,
       fontSize = 12,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })     
 
       mui.newText({
       y = 173,
       x = centerX - 70,
       name = "nomeEspecialidade",
-      text = "Dentista",
+      text = detalhe.especialidade,
       width = 150,
       font = native.systemFont,
       fontSize = 25,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 
 -- ----------------------------------------------
@@ -135,18 +139,18 @@ function scene:show( event )
       width = 100,
       font = native.systemFontBold,
       fontSize = 12,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })     
 
  mui.newText({
       y = 173,
       x = centerX + 85,
       name = "dataConsulta",
-      text = "15/08/2017",
+      text = detalhe.dataAgendamento.day .. '/' .. detalhe.dataAgendamento.month .. '/' .. detalhe.dataAgendamento.year,
       width = 150,
       font = native.systemFont,
       fontSize = 25,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 -- --------------------------------------------
 mui.newText({
@@ -158,29 +162,30 @@ mui.newText({
       width = 100,
       font = native.systemFontBold,
       fontSize = 12,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })     
 
  mui.newText({
       y = 260,
       x = centerX + 20,
       name = "nomePosto",
-      text = "Aqui vai o nome do posto",
+      text = detalhe.paciente.postoSaude.nome,
       width = 320,
       font = native.systemFont,
       fontSize = 25,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 
   mui.newText({
-      y = 285,
+      y = 295,
       x = centerX +20,
       name = "enderecoPosto",
-      text = "Aqui vai o endereço do posto",
+      text = detalhe.paciente.postoSaude.endereco.logradouro .. ", " .. detalhe.paciente.postoSaude.endereco.numero 
+             .. ", \nBairro: " .. detalhe.paciente.postoSaude.endereco.bairro.nome,
       width = 320,
       font = native.systemFont,
       fontSize = 20,
-      fillColor = { 1, 1, 1, 1 },
+      fillColor = cor,
       })
 
 -- -------------------------------------------------
