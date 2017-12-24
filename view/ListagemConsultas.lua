@@ -9,7 +9,7 @@ local scene = composer.newScene()
 
 local touch = function (event)
     print(mui.getWidgetProperty("teste", "value"))
-    composer.setVariable( "detalhe", {nome = "Fernando"}
+    composer.setVariable( "detalhe", {nome = "Fernando"})
     composer.gotoScene("view.DetalhesConsulta")
 end
 
@@ -26,14 +26,6 @@ function scene:create( event )
     print(tab)
     list = {}
 
-    if tab ~= nil then
-        for k, v in pairs(tab) do      
-            table.insert(list, { key = tab[k].id, text = "tab[k].nome", value = k, isCategory = false })
-        end
-    else
-        print("Não foi possivel recuperar a lista de consulta")  
-    end      
-
 end
   
 -- show()
@@ -42,14 +34,17 @@ function scene:show( event )
     local sceneGroup = self.view
     local phase = event.phase
 
+    for k, v in pairs(tab) do      
+        table.insert(list, { key = tab[k].id, text = "Data Consulta: " .. tab[k].dataAgendamento.day .. "/" .. tab[k].dataAgendamento.month .. "/" .. tab[k].dataAgendamento.year .. "\nStatus: " .. tab[k].status .. "\nEspecialidade: " .. tab[k].especialidade, 
+                           value = k, isCategory = false })
+    end
+
     mui.init()
  
     if ( phase == "will" ) then
         
  
     elseif ( phase == "did" ) then
-
-    local list = { }
 
     mui.newTableView({
     parent = sceneGroup,
@@ -59,7 +54,7 @@ function scene:show( event )
     top = 0,
     left = 0,
     font = native.systemFont,
-    fontSize = 9,
+    fontSize = 5,
     textColor = { 0, 0, 0, 1 },
     lineColor = { 1, 1, 1, 1 },
     lineHeight = 2,
@@ -70,8 +65,8 @@ function scene:show( event )
     callBackRender = mui.onRowRenderDemo,
     scrollListener = mui.scrollListener,
     list = list,
-    fontSize = 25,
-    rowHeight = 28,
+    fontSize = 10,
+    rowHeight = 40,
     columnOptions = {
         widths = { 60, 60, 60 },
     },

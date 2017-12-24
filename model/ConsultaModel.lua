@@ -44,8 +44,8 @@ end
 
 function ConsultaModel:buscar(id)
 	print(id)
-	r, c = http.request("http://192.168.0.105:8080/consultas?id=" .. id)
-	print(c)
+	r, c = http.request("http://192.168.0.105:8080/consultas/?id=" .. id)
+	
 	if r == nil then
 		print("Erro ao recuperar consulta: " .. c)
 	else	
