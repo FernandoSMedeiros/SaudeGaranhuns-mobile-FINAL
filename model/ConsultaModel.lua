@@ -2,6 +2,10 @@ local composer = require( "composer" )
 local json = require("json")
 local c = require("model.entidades.Consulta")
 
+local io = require("io")
+local http = require("socket.http")
+--local ltn12 = require("ltn12")
+
 local ConsultaModel = {consulta}
 
 function ConsultaModel:criar()
@@ -34,27 +38,20 @@ function ConsultaModel:atualizar()
 		headers["Content-Type"] = "application/json; charset=utf-8" 
 		params.headers = headers
 		params.body = body		
-
-		--print(body)
-
 		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "PUT", networkListener, params)
 	
 end
 
-function ConsultaModel:buscar()
-		 
-	local data
-
-	network.request("http://viacep.com.br/ws/01001000/json/", "GET", busca)
-		
-end
-
-function busca (event)
-	if ( event.isError ) then
-        print( "Network error: ", event.response )
-    else
-    	local consultas = json.decode(event.response)
-    end
+function ConsultaModel:buscar(id)
+	print(id)
+	r, c = http.request("http://192.168.0.105:8080/consultas?id=" .. id)
+	print(c)
+	if r == nil then
+		print("Erro ao recuperar consulta: " .. c)
+	else	
+		return json.decode(r)
+	end	
+	
 end
 
 function networkListener(event) 

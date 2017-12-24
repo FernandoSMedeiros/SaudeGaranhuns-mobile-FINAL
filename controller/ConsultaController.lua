@@ -17,8 +17,8 @@ function ConsultaController:atualizar()
 	self.model:atualizar(self.consulta)
 end
 
-function ConsultaController:buscar()
-	self.model:buscar()
+function ConsultaController:buscar(id)
+	return self.model:buscar(id)
 end	
 
 return ConsultaController

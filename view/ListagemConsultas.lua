@@ -2,6 +2,7 @@ local composer = require( "composer" )
 local widget = require( "widget" ) 
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
+local consulta = require("controller.ConsultaController")
 local json = require("json")
 
 local scene = composer.newScene()
@@ -15,8 +16,24 @@ end
 function scene:create( event )
  
     local sceneGroup = self.view
-    -- Code here runs when the scene is first created but has not yet appeared on screen
- 
+
+    local controller = consulta:criar()
+
+    local idPaciente = json.decode(composer.getVariable("pacienteLogado"))
+    print(idPaciente.id)
+
+    tab = controller:buscar(idPaciente.id)
+    print(tab)
+    list = {}
+
+    if tab ~= nil then
+        for k, v in pairs(tab) do      
+            table.insert(list, { key = tab[k].id, text = tab[k].nome, value = k, isCategory = false })
+        end
+    else
+        print("Não foi possivel recuperar a lista de consulta")  
+    end      
+
 end
   
 -- show()
@@ -25,7 +42,7 @@ function scene:show( event )
    
     local jsonT = '[{"id" : "1", "nome" : "Fernando"}, {"id" : "2", "nome" : "k"}, {"id" : "3", "nome" : "e"}, {"id" : "4", "nome" : "a"}]'
     -- -------
-    local tab = json.decode(jsonT)
+    --local tab = json.decode(jsonT)
 
 
     local sceneGroup = self.view
@@ -40,9 +57,7 @@ function scene:show( event )
 
     local list = { }
 
-    for k, v in pairs(tab) do      
-        table.insert(list, { key = tab[k].id, text = tab[k].nome, value = k, isCategory = false })
-    end
+    
    
     mui.newTableView({
     parent = sceneGroup,
