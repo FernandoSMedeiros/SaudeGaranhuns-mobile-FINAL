@@ -9,7 +9,7 @@ local scene = composer.newScene()
 
 local touch = function (event)
     print(mui.getWidgetProperty("teste", "value"))
-    composer.setVariable( "detalhe", {nome = "Fernando"}--[[mui.getWidgetProperty("teste", "value")--]] )
+    composer.setVariable( "detalhe", {nome = "Fernando"}
     composer.gotoScene("view.DetalhesConsulta")
 end
 
@@ -28,7 +28,7 @@ function scene:create( event )
 
     if tab ~= nil then
         for k, v in pairs(tab) do      
-            table.insert(list, { key = tab[k].id, text = tab[k].nome, value = k, isCategory = false })
+            table.insert(list, { key = tab[k].id, text = "tab[k].nome", value = k, isCategory = false })
         end
     else
         print("Não foi possivel recuperar a lista de consulta")  
@@ -38,12 +38,6 @@ end
   
 -- show()
 function scene:show( event )
-
-   
-    local jsonT = '[{"id" : "1", "nome" : "Fernando"}, {"id" : "2", "nome" : "k"}, {"id" : "3", "nome" : "e"}, {"id" : "4", "nome" : "a"}]'
-    -- -------
-    --local tab = json.decode(jsonT)
-
 
     local sceneGroup = self.view
     local phase = event.phase
@@ -57,36 +51,33 @@ function scene:show( event )
 
     local list = { }
 
-    
-   
     mui.newTableView({
     parent = sceneGroup,
     name = "teste",
     width = display.contentWidth,
     height = display.contentHeight - 50,
     top = 0,
-    left = 0, --muiData.safeAreaWidth - 190,
+    left = 0,
     font = native.systemFont,
     fontSize = 9,
     textColor = { 0, 0, 0, 1 },
     lineColor = { 1, 1, 1, 1 },
     lineHeight = 2,
-    rowColor = {1, 1, 1, 1}, --{ default={1,1,1}, over={1,0.5,0,0.2} },
-    rowHeight = 20,
-    -- rowAnimation = false, -- turn on rowAnimation
+    rowColor = {1, 1, 1, 1},
+    rowHeight = 20,   
     noLines = false,
-    callBackTouch = touch, --mui.onRowTouchDemo,
+    callBackTouch = touch,
     callBackRender = mui.onRowRenderDemo,
-    scrollListener = mui.scrollListener,  -- needed if using buttons, etc within the row!
+    scrollListener = mui.scrollListener,
     list = list,
     fontSize = 25,
     rowHeight = 28,
     columnOptions = {
-        widths = { 60, 60, 60 }, -- must supply each else "auto" is assumed.
+        widths = { 60, 60, 60 },
     },
     categoryColor = { default={0.8,0.8,0.8,0.8} },
     categoryLineColor = { 1, 1, 1, 0 },
-    --touchpointColor = { 0.4, 0.4, 0.4 },
+    
 })   
 
     mui.newRectButton({
