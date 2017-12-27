@@ -15,8 +15,7 @@ function DataDisponivel:criar()
 end
 
 function DataDisponivel:buscar()	
-	--network.request("http://192.168.0.105:8080/datasAgendamento", "GET", DataDisponivel.busca)
-	r = http.request("http://192.168.0.105:8080/datasAgendamento")
+	r = http.request("http://192.168.0.105:8080/agendamentos?id=" .. id .. "&enum=" .. enum)
 	return json.decode(r)
 end	
 
