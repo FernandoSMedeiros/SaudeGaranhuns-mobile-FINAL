@@ -32,6 +32,7 @@ function scene:show( event )
     local cor = {0, 0, 0}
 
      mui.newText({
+      parent = sceneGroup,
       y = 16,
       x = centerX - 100,
       name = "solicitacao",
@@ -44,6 +45,7 @@ function scene:show( event )
       })
 
       mui.newText({
+      parent = sceneGroup,
       y = 40,
       x = centerX - 85,
       name = "dataSolicitacao",
@@ -56,6 +58,7 @@ function scene:show( event )
       })
 -- --------------------------------------
      mui.newText({
+      parent = sceneGroup,
       y = 16,
       x = centerX + 34,
       name = "status",
@@ -68,6 +71,7 @@ function scene:show( event )
       })     
 
       mui.newText({
+      parent = sceneGroup,
       y = 40,
       x = 232,
       name = "statusAtual",
@@ -82,6 +86,7 @@ function scene:show( event )
 -- ----------------------------------------     
  
  mui.newText({
+      parent = sceneGroup,
       y = 80,
       x = centerX - 120,
       name = "paciente",
@@ -94,6 +99,7 @@ function scene:show( event )
       })     
 
       mui.newText({
+      parent = sceneGroup,
       y = 104,
       x = centerX + 23,
       name = "nome",
@@ -106,6 +112,7 @@ function scene:show( event )
 -- ----------------------------------------------
 
  mui.newText({
+      parent = sceneGroup,
       y = 150,
       x = centerX - 95,
       name = "especialidade",
@@ -118,6 +125,7 @@ function scene:show( event )
       })     
 
       mui.newText({
+      parent = sceneGroup,
       y = 173,
       x = centerX - 70,
       name = "nomeEspecialidade",
@@ -131,6 +139,7 @@ function scene:show( event )
 -- ----------------------------------------------
 
  mui.newText({
+      parent = sceneGroup,
       y = 150,
       x = centerX + 65,
       name = "consulta",
@@ -143,6 +152,7 @@ function scene:show( event )
       })     
 
  mui.newText({
+      parent = sceneGroup,
       y = 173,
       x = centerX + 85,
       name = "dataConsulta",
@@ -154,6 +164,7 @@ function scene:show( event )
       })
 -- --------------------------------------------
 mui.newText({
+      parent = sceneGroup,
       y = 240,
       x = centerX - 90,
       name = "posto",
@@ -166,6 +177,7 @@ mui.newText({
       })     
 
  mui.newText({
+      parent = sceneGroup,
       y = 260,
       x = centerX + 20,
       name = "nomePosto",
@@ -177,6 +189,7 @@ mui.newText({
       })
 
   mui.newText({
+      parent = sceneGroup,
       y = 295,
       x = centerX +20,
       name = "enderecoPosto",
