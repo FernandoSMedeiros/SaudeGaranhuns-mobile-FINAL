@@ -14,7 +14,7 @@ local scene = composer.newScene()
 local ver = function()
     
     local verDatas = {especialidade = mui.getWidgetProperty("especialidade", "value"),  
-                      idPaciente = json.decode(composer.getVariable("pacienteLogado")).id}
+                      idPaciente = json.decode(composer.getVariable("pacienteLogado")).postoSaude.id}
 
     composer.setVariable("datasDisponiveis", verDatas)
     
