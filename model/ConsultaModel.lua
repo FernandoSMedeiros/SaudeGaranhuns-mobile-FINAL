@@ -45,9 +45,9 @@ end
 function ConsultaModel:buscar(id)	
 	r = http.request("http://192.168.0.105:8080/consultas/?id=" .. id)
 		return json.decode(r)
-	end	
+end	
 	
-end
+
 
 function networkListener(event) 
     if ( event.isError ) then
