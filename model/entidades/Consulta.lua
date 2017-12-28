@@ -14,7 +14,7 @@ function Consulta:criar()
 	self.id = 0
 	self.especialidade = "GERAL"
 	self.prioridade = "NENHUMA"
-	self.status = "FILA"
+	self.status = "AGENDADO"
 	self.dataSolicitacao = dataSol:criar()
 	self.dataAgendamento = dataAg:criar()
 	self.paciente = paciente
