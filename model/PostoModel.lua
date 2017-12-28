@@ -8,7 +8,7 @@ function PostoModel:criar()
 end
 
 function PostoModel:buscar()
-	network.request("http://localhost:8080/postos", "GET", busca)		
+	network.request("http://10.28.3.143:8080/postos", "GET", busca)		
 end
 
 function busca (event)

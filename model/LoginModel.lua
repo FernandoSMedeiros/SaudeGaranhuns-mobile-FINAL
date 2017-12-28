@@ -14,7 +14,7 @@ end
 function LoginModel:logar()
 	print("chegou no logar do model")
 	print(self.usuario.login)
-	network.request("http://192.168.0.105:8080/pacientes?cartaoSus=" .. self.usuario.login, "GET", LoginModel.busca)		
+	network.request("http://10.28.3.143:8080/pacientes?cartaoSus=" .. self.usuario.login, "GET", LoginModel.busca)		
 end
 
 function LoginModel.busca (event)    

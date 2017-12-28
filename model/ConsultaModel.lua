@@ -25,7 +25,7 @@ function ConsultaModel:salvar()
 
 		print(body)
 		
-		network.request( "http://192.168.0.105:8080/consultas", "POST", networkListener, params)
+		network.request( "http://10.28.3.143:8080/consultas", "POST", networkListener, params)
 	
 end
 
@@ -38,12 +38,12 @@ function ConsultaModel:atualizar()
 		headers["Content-Type"] = "application/json; charset=utf-8" 
 		params.headers = headers
 		params.body = body		
-		network.request( "http://192.168.0.105:8084/CadastroCliente/rest/clientes/", "PUT", networkListener, params)
+		network.request( "http://10.28.3.143:8084/CadastroCliente/rest/clientes/", "PUT", networkListener, params)
 	
 end
 
 function ConsultaModel:buscar(id)	
-	r = http.request("http://192.168.0.105:8080/consultas/?id=" .. id)
+	r = http.request("http://10.28.3.143:8080/consultas/?id=" .. id)
 		return json.decode(r)
 end	
 	

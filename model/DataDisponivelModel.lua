@@ -16,9 +16,9 @@ end
 
 function DataDisponivel:buscar(id, enum)	
 	
-	print("URL: " .. "http://192.168.0.105:8080/agendamentos?id=" .. id .. "&enum=" .. enum)
+	print("URL: " .. "http://10.28.3.143:8080/agendamentos?id=" .. id .. "&enum=" .. enum)
 	
-	r = http.request("http://192.168.0.105:8080/agendamentos?id=" .. id .. "&enum=" .. enum)	
+	r = http.request("http://10.28.3.143:8080/agendamentos?id=" .. id .. "&enum=" .. enum)	
 	return json.decode(r)
 	
 end	
