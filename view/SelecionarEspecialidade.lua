@@ -18,10 +18,12 @@ local ver = function()
 
     composer.setVariable("datasDisponiveis", verDatas)
     
-    if(mui.getWidgetProperty("especialidade", "value") == 0) then
+    if (mui.getWidgetProperty("especialidade", "value") == 0) then
         composer.setVariable("especialidade", "GERAL")
+        print("GERAL")
     else
         composer.setVariable("especialidade", "DENTISTA")
+        print("DENTISTA")
     end    
     
     composer.gotoScene("view.DataDisponivel")

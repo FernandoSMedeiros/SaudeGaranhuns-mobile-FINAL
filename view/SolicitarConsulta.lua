@@ -42,6 +42,7 @@ function scene:show( event )
     consultaController = controller:criar()
 
     local sceneGroup = self.view
+    
     local phase = event.phase
  
     if ( phase == "will" ) then
@@ -55,6 +56,7 @@ function scene:show( event )
     local numOfRows = 4
     mui.newSelect({
         name = "prioridade",
+        parent = sceneGroup,
         labelText = "Prioridade",
         --text = "selecione",
         font = native.systemFont,
@@ -108,7 +110,7 @@ function scene:show( event )
     })  
 
     mui.newRectButton({
-        parent = mui.getParent(),
+        parent = sceneGroup,
         name = "solicitar",
         text = "Solicitar Consulta",
         width = 150,
