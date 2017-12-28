@@ -1,4 +1,5 @@
 local json = require("json")
+local composer = require("composer")
 
 local PacienteModel = {}
 
@@ -42,6 +43,23 @@ function networkListener(event)
     else
         print ( "RESPONSE: " .. event.response )
     end
+
+    if (event.status == 201) then
+    	local alert = native.showAlert( "Concluido", "Paciente cadastrado!", { "OK" }, onComplete )
+    end	
+end
+
+function onComplete( event )
+    if ( event.action == "clicked" ) then
+        local i = event.index
+        if ( i == 1 ) then
+           voltar()
+        end
+    end
+end
+
+function voltar()
+	composer.gotoScene("view.Login")
 end
 
 return PacienteModel

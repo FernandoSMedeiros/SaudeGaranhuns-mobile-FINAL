@@ -1,5 +1,6 @@
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
+local json = require("json")
 
 local composer = require( "composer" )
  
@@ -12,11 +13,11 @@ local scene = composer.newScene()
  
 local ver = function()
     
-    local verDatas = '{' .. "especialidade" .. ':' .. '"' .. mui.getWidgetProperty("especialidade", "value") .. '"' .. ' , ' 
-                         .. "paciente" .. ':' .. composer.getVariable("pacienteLogado") .. '}'
+    local verDatas = {especialidade = mui.getWidgetProperty("especialidade", "value"),  
+                      idPaciente = json.decode(composer.getVariable("pacienteLogado")).id}
 
     composer.setVariable("datasDisponiveis", verDatas)
-    composer.setVariable("especialidade", mui.getWidgetProperty("especialidade", "value"))
+    --composer.setVariable("especialidade", mui.getWidgetProperty("especialidade", "value"))
 
     composer.gotoScene("view.DataDisponivel")
 end 
@@ -68,8 +69,8 @@ function scene:show( event )
         callBackTouch = mui.onRowTouchSelector,
         scrollListener = nil,
         list = { -- if 'key' use it for 'id' in the table row
-            { key = "1", text = "Geral", value = "GERAL", isCategory = false},
-            { key = "2", text = "Dentista", value = "DENTISTA", isCategory = false },
+            { key = "1", text = "Geral", value = 0, isCategory = false},
+            { key = "2", text = "Dentista", value = 1, isCategory = false },
         
         },
         scrollView = scrollView,

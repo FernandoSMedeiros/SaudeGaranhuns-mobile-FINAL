@@ -7,11 +7,6 @@ local muiData = require( "materialui.mui-data" )
  
 local scene = composer.newScene()
  
-data = data:criar()
-datas = data:buscar()    
-tab = datas
-list = {}
-
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -36,14 +31,23 @@ end
 -- create()
 function scene:create( event )
  
+    local especialidade = composer.getVariable("datasDisponiveis").especialidade
+    local idPaciente = composer.getVariable("datasDisponiveis").idPaciente
+
+    data = data:criar()
+    datas = data:buscar(idPaciente, especialidade)    
+    tab = datas
+    list = {}
+
     mui.init()
     local sceneGroup = self.view
     
-    for k, v in pairs(tab) do      
-        table.insert(list, { key = tab[k].id, text = tab[k].day .. '/' .. tab[k].month .. '/' .. tab[k].year, value = k, isCategory = false })
-    end 
-
-    print(composer.getVariable("datasDisponiveis"))   
+    if tab ~= nil then
+        for k, v in pairs(tab) do      
+            table.insert(list, { key = tab[k].id, text = tab[k].day .. '/' .. tab[k].month .. '/' .. tab[k].year, value = k, isCategory = false })
+        end 
+    end    
+    --print(composer.getVariable("datasDisponiveis"))   
     
 end 
  
@@ -86,6 +90,27 @@ function scene:show( event )
         categoryLineColor = { 1, 1, 1, 0 },
         --touchpointColor = { 0.4, 0.4, 0.4 },
     })
+
+    mui.newRectButton({
+        parent = sceneGroup,
+        name = "voltar",
+        text = "Voltar",
+        width = 150,
+        height = 30,
+        x = display.getContentCenterX,
+        y = display.contentCenterY+220,
+        font = native.systemFont,
+        fontSize = 16,
+        fillColor = { 0.25, 0.75, 1, 1 },
+        textColor = { 1, 1, 1 },
+        touchpoint = true,        
+        callBack = mui.actionSwitchScene,
+        callBackData = {
+            sceneDestination = "view.MenuPrincipal",
+            sceneTransitionColor = { 0.73, 0.73, 1 },
+            sceneTransitionAnimation = false
+        }   
+    })  
 
     end
 end

@@ -18,9 +18,10 @@ function LoginModel:logar()
 end
 
 function LoginModel.busca (event)    
-	if ( event.isError ) then
+	
+    if ( event.isError ) then
         print(event.status)
-        print( "Network error: ", event.response )
+        print( "Network error: ", event.response )        
         
     else
 
@@ -40,8 +41,21 @@ function LoginModel.busca (event)
                 composer.gotoScene("view.MenuPrincipal")                
             end  
 
-        end    
-        
+        end         
+    end
+
+    if (event.status == 500) then
+        local alert = native.showAlert( "Erro", "Paciente não Cadastrado", { "OK" }, onComplete )
+    end    
+
+end
+
+local function onComplete( event )
+    if ( event.action == "clicked" ) then
+        local i = event.index
+        if ( i == 1 ) then
+           -- Fecha por padrão
+        end
     end
 end
 

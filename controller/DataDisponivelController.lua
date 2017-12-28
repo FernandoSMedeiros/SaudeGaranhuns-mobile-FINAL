@@ -9,8 +9,8 @@ function DataDisponivelController:criar()
 	return self
 end
 
-function DataDisponivelController:buscar()
-	return self.model:buscar()		
+function DataDisponivelController:buscar(id, enum)
+	return self.model:buscar(id, enum)		
 end
 
 return DataDisponivelController

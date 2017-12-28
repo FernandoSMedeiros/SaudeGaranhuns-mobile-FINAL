@@ -1,7 +1,7 @@
 local composer = require( "composer" )
 local json = require("json")
-local c = require("model.entidades.Consulta")
-
+local co = require("model.entidades.Consulta")
+local composer = require("composer")
 local io = require("io")
 local http = require("socket.http")
 --local ltn12 = require("ltn12")
@@ -9,7 +9,7 @@ local http = require("socket.http")
 local ConsultaModel = {consulta}
 
 function ConsultaModel:criar()
-	self.consulta = c:criar()
+	self.consulta = co:criar()
 	return self
 end
 
@@ -42,13 +42,8 @@ function ConsultaModel:atualizar()
 	
 end
 
-function ConsultaModel:buscar(id)
-	print(id)
-	r, c = http.request("http://192.168.0.105:8080/consultas/?id=" .. id)
-	
-	if r == nil then
-		print("Erro ao recuperar consulta: " .. c)
-	else	
+function ConsultaModel:buscar(id)	
+	r = http.request("http://192.168.0.105:8080/consultas/?id=" .. id)
 		return json.decode(r)
 	end	
 	
@@ -60,6 +55,24 @@ function networkListener(event)
     else
         print ( "Status: " .. event.status )
     end
+
+    if (event.status == 201) then
+    	local alert = native.showAlert( "Concluido", "Consulta cadastrada!", { "OK" }, onComplete )
+    end	
+
+end
+
+function onComplete( event )
+    if ( event.action == "clicked" ) then
+        local i = event.index
+        if ( i == 1 ) then
+           voltar()
+        end
+    end
+end
+
+function voltar()
+	composer.gotoScene("view.MenuPrincipal")
 end
 
 

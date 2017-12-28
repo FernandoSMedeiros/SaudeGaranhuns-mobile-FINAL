@@ -125,6 +125,7 @@ function scene:show( event )
     local listaSelect = listaSelect()
     mui.newSelect({
         name = "posto",
+        parent = sceneGroup,
         labelText = "Posto",
         text = "Selecione seu posto",
         font = native.systemFont,
