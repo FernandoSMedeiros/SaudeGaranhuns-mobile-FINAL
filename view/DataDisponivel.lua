@@ -4,7 +4,7 @@ local dataModel = require("model.DataDisponivelModel")
 local json = require("json")
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
- 
+
 local scene = composer.newScene()
  
 -- -----------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ local touch = function (event)
     --print(mui.getWidgetProperty("datas", "value"))
     valor  = mui.getWidgetProperty("datas", "value")    
     composer.setVariable( "dataConsulta", tab[valor])
-    
+
     --print(tab[valor].day .. '/' .. tab[valor].month .. '/' .. tab[valor].year)
 
     composer.gotoScene("view.SolicitarConsulta")

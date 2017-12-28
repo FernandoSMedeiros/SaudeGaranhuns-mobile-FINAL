@@ -4,6 +4,7 @@ local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" ) 
 local controller = require("controller.ConsultaController")
 local paciente = require("model.entidades.Paciente")
+local especialidade = require("model.enumerations.Especialidade")
 local json = require("json")
 
 local consultaController = nil
@@ -14,7 +15,7 @@ local salvar = function()
 
   --local paciente = paciente:criar()
   local dataAgendada = composer.getVariable("dataConsulta")
-  local especialidade = composer.getVariable("especialidade")  
+  local especialidade = composer.getVariable("especialidade")
  
   paciente = composer.getVariable("pacienteLogado") 
   --print(paciente)

@@ -17,8 +17,13 @@ local ver = function()
                       idPaciente = json.decode(composer.getVariable("pacienteLogado")).id}
 
     composer.setVariable("datasDisponiveis", verDatas)
-    --composer.setVariable("especialidade", mui.getWidgetProperty("especialidade", "value"))
-
+    
+    if(mui.getWidgetProperty("especialidade", "value") == 0)
+        composer.setVariable("especialidade", "GERAL")
+    else
+        composer.setVariable("especialidade", "DENTISTA")
+    end    
+    
     composer.gotoScene("view.DataDisponivel")
 end 
   
