@@ -9,9 +9,6 @@ local scene = composer.newScene()
 
 local controller = consulta:criar()
 local idPaciente = json.decode(composer.getVariable("pacienteLogado"))
-tab = controller:buscar(idPaciente.id)
-print(tab)
-list = {}
 
 local touch = function ()
     local id = mui.getWidgetProperty("detalhar", "value")
@@ -23,9 +20,12 @@ end
 
 function scene:create( event )
  
-    local sceneGroup = self.view
-    
+    local sceneGroup = self.view    
     print(idPaciente.id)
+
+    tab = controller:buscar(idPaciente.id)
+    print(tab)
+    list = {}
 
 end
   
@@ -35,9 +35,11 @@ function scene:show( event )
     local sceneGroup = self.view
     local phase = event.phase
 
-    for k, v in pairs(tab) do      
-        table.insert(list, { key = tab[k].id, text = "Data Consulta: " .. tab[k].dataAgendamento.day .. "/" .. tab[k].dataAgendamento.month .. "/" .. tab[k].dataAgendamento.year .. "\nStatus: " .. tab[k].status .. "\nEspecialidade: " .. tab[k].especialidade, 
+    for k, v in pairs(tab) do
+        if tab ~= nil then      
+            table.insert(list, { key = tab[k].id, text = "Data Consulta: " .. tab[k].dataAgendamento.day .. "/" .. tab[k].dataAgendamento.month .. "/" .. tab[k].dataAgendamento.year .. "\nStatus: " .. tab[k].status .. "\nEspecialidade: " .. tab[k].especialidade, 
                            value = k, isCategory = false })
+        end    
     end
 
     mui.init()
@@ -123,7 +125,8 @@ function scene:destroy( event )
     
     sceneGroup:removeSelf()
     sceneGroup = nil
-    mui.destroy()    
+    mui.destroy()
+    tab = nil    
  
 end
  
